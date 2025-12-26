@@ -1,0 +1,251 @@
+---
+
+---
+
+<footer class="footer-section">
+    <div class="footer-container">
+        <!-- Main Brand Area -->
+        <div class="footer-top reveal">
+            <div class="footer-brand">
+                <h2 class="brand-title">
+                    Daniel <span class="italic">Ochoa</span>
+                </h2>
+                <p class="brand-sub">
+                    Arquitectura de Software & Diseño Digital
+                </p>
+            </div>
+
+            <div class="footer-cta-box">
+                <span class="cta-label">¿Tienes una idea en mente?</span>
+                <a href="mailto:hola@daniel.dev" class="cta-email"
+                    >hola@daniel.dev</a
+                >
+            </div>
+        </div>
+
+        <!-- Links Grid -->
+        <div class="footer-grid">
+            <div class="footer-col reveal" style="transition-delay: 100ms">
+                <span class="col-index">01</span>
+                <span class="col-title">Navegación</span>
+                <nav class="f-nav">
+                    <a href="#proyectos">Proyectos</a>
+                    <a href="#sobre-mi">Sobre Mí</a>
+                    <a href="#experience">Trayectoria</a>
+                    <a href="#contacto">Contacto</a>
+                </nav>
+            </div>
+
+            <div class="footer-col reveal" style="transition-delay: 200ms">
+                <span class="col-index">02</span>
+                <span class="col-title">Social</span>
+                <nav class="f-nav">
+                    <a href="#" target="_blank">LinkedIn</a>
+                    <a href="#" target="_blank">GitHub</a>
+                    <a href="#" target="_blank">Twitter</a>
+                </nav>
+            </div>
+
+            <div class="footer-col reveal" style="transition-delay: 300ms">
+                <span class="col-index">03</span>
+                <span class="col-title">Base</span>
+                <div class="f-info">
+                    <p>Bogotá, CO</p>
+                    <p class="time" id="footer-time">00:00:00</p>
+                    <p class="tz">GMT-5 Standard</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="footer-bottom">
+            <p class="copy">
+                © {new Date().getFullYear()} Daniel Ochoa. Diseñado con intención.
+            </p>
+            <div class="footer-line"></div>
+        </div>
+    </div>
+</footer>
+
+<style>
+    .footer-section {
+        padding: 140px 5% 60px;
+        background-color: var(--bg-main);
+        border-top: 1px solid var(--glass-border);
+    }
+
+    .footer-container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    /* Top Brand Area */
+    .footer-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 120px;
+    }
+
+    .brand-title {
+        font-family: var(--font-heading);
+        font-size: clamp(3rem, 6vw, 5rem);
+        font-weight: 900;
+        line-height: 0.9;
+        margin-bottom: 1.5rem;
+    }
+
+    .brand-title .italic {
+        font-style: italic;
+        color: var(--accent-dark);
+        font-weight: 400;
+    }
+
+    .brand-sub {
+        font-size: 1.1rem;
+        color: var(--texto-muted);
+        font-weight: 600;
+    }
+
+    .footer-cta-box {
+        text-align: right;
+    }
+
+    .cta-label {
+        display: block;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-weight: 800;
+        color: var(--accent-dark);
+        margin-bottom: 1rem;
+    }
+
+    .cta-email {
+        font-family: var(--font-heading);
+        font-size: clamp(1.5rem, 3vw, 2.8rem);
+        color: var(--texto);
+        text-decoration: none;
+        font-weight: 700;
+        transition: color 0.3s ease;
+    }
+
+    .cta-email:hover {
+        color: var(--accent-dark);
+    }
+
+    /* Links Grid */
+    .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 80px;
+        margin-bottom: 100px;
+    }
+
+    .col-index {
+        display: block;
+        font-size: 0.8rem;
+        font-weight: 800;
+        color: var(--accent);
+        margin-bottom: 1rem;
+    }
+
+    .col-title {
+        display: block;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-weight: 800;
+        color: var(--texto-muted);
+        margin-bottom: 2.5rem;
+    }
+
+    .f-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+    }
+
+    .f-nav a {
+        text-decoration: none;
+        color: var(--texto);
+        font-size: 1.1rem;
+        font-weight: 600;
+        transition: opacity 0.3s ease;
+    }
+
+    .f-nav a:hover {
+        opacity: 0.5;
+    }
+
+    .f-info p {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: 0 0 0.5rem;
+    }
+
+    .f-info .time {
+        font-family: var(--font-heading);
+        font-size: 1.8rem;
+        color: var(--accent-dark);
+    }
+
+    .f-info .tz {
+        font-size: 0.8rem;
+        color: var(--texto-muted);
+        font-weight: 500;
+        margin: 0;
+    }
+
+    /* Bottom */
+    .footer-bottom {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        padding-top: 40px;
+        border-top: 1px solid var(--glass-border);
+    }
+
+    .copy {
+        font-size: 0.9rem;
+        color: var(--texto-muted);
+        white-space: nowrap;
+    }
+
+    .footer-line {
+        height: 1px;
+        flex-grow: 1;
+        background: var(--glass-border);
+    }
+
+    @media (max-width: 900px) {
+        .footer-top {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 60px;
+        }
+        .footer-cta-box {
+            text-align: left;
+        }
+        .footer-grid {
+            grid-template-columns: 1fr;
+            gap: 60px;
+        }
+    }
+</style>
+
+<script>
+    const updateFooterTime = () => {
+        const el = document.getElementById("footer-time");
+        if (!el) return;
+        el.textContent = new Date().toLocaleTimeString("es-CO", {
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            timeZone: "America/Bogota",
+            hour12: false,
+        });
+    };
+    setInterval(updateFooterTime, 1000);
+    updateFooterTime();
+</script>

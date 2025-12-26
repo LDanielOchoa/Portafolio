@@ -1,0 +1,393 @@
+---
+
+---
+
+<section id="hero" class="hero-wrap">
+    <!-- Glows Decorativos (Mesh Gradients) -->
+    <div class="glow glow-1" aria-hidden="true"></div>
+    <div class="glow glow-2" aria-hidden="true"></div>
+
+    <div class="hero-inner">
+        <!-- Badge de Disponibilidad (Pill Moderno) -->
+        <div class="reveal availability-strip">
+            <div class="pill-badge">
+                <span class="dot"></span>
+                <span>Disponible para proyectos</span>
+            </div>
+            <span class="divider"></span>
+            <span class="location">Bogotá, Colombia</span>
+        </div>
+
+        <!-- Bloque de Nombre (Jerarquía Clara) -->
+        <div class="name-block">
+            <h1 class="reveal name-main">
+                <span class="text-fill">Daniel</span>
+                <span class="text-outline">Ochoa</span>
+            </h1>
+        </div>
+
+        <!-- Tagline & Descripción -->
+        <div class="reveal content-block" style="transition-delay: 200ms">
+            <p class="hero-description">
+                Arquitecto de software especializado en crear
+                <span class="highlight">soluciones digitales</span> donde la estética
+                y la funcionalidad convergen de forma minimalista.
+            </p>
+        </div>
+
+        <!-- Acciones (UX Refinada) -->
+        <div class="reveal actions-block" style="transition-delay: 400ms">
+            <div class="btn-container">
+                <a href="#proyectos" class="btn-primary">
+                    Ver Proyectos
+                    <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                    >
+                        <path d="M5 12h14M12 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+                <a href="#contacto" class="btn-secondary"> Hablemos </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Elemento Rotativo (Sutil y Elegante) -->
+    <div class="scroll-element reveal">
+        <div class="rotating-unit">
+            <svg viewBox="0 0 100 100">
+                <path
+                    id="circlePath"
+                    d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
+                    fill="none"></path>
+                <text
+                    font-size="7"
+                    font-weight="800"
+                    fill="var(--texto-muted)"
+                    letter-spacing="4"
+                >
+                    <textPath xlink:href="#circlePath"
+                        >SCROLL DOWN • EXPLORAR • SCROLL DOWN • EXPLORAR •</textPath
+                    >
+                </text>
+            </svg>
+            <div class="unit-icon">
+                <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                >
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"></path>
+                </svg>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .hero-wrap {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--bg-main);
+        position: relative;
+        overflow: hidden;
+        perspective: 1000px;
+    }
+
+    /* Glows Effect (Mesh Gradients) */
+    .glow {
+        position: absolute;
+        width: 40vw;
+        height: 40vw;
+        border-radius: 50%;
+        filter: blur(100px);
+        opacity: 0.15;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    .glow-1 {
+        top: -10%;
+        right: -10%;
+        background: var(--accent);
+    }
+
+    .glow-2 {
+        bottom: -10%;
+        left: -10%;
+        background: var(--accent-dark);
+    }
+
+    .hero-inner {
+        position: relative;
+        z-index: 10;
+        text-align: center;
+        max-width: 1000px;
+        width: 100%;
+        padding: 0 5%;
+        margin-top: -2rem; /* Visual balance */
+    }
+
+    /* Availability Strip */
+    .availability-strip {
+        display: inline-flex;
+        align-items: center;
+        gap: 1.5rem;
+        margin-bottom: 3.5rem;
+    }
+
+    .pill-badge {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--glass-border);
+        border-radius: 100px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--texto);
+        backdrop-filter: blur(10px);
+    }
+
+    .dot {
+        width: 6px;
+        height: 6px;
+        background: #22c55e;
+        border-radius: 50%;
+        box-shadow: 0 0 10px #22c55e;
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0%,
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+        50% {
+            opacity: 0.5;
+            transform: scale(1.3);
+        }
+    }
+
+    .divider {
+        width: 1px;
+        height: 14px;
+        background: var(--glass-border);
+    }
+
+    .location {
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: var(--texto-muted);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    /* Name Block */
+    .name-main {
+        font-family: var(--font-heading);
+        font-size: clamp(4.5rem, 15vw, 12rem);
+        line-height: 0.9;
+        font-weight: 900;
+        margin: 0 0 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .text-fill {
+        color: var(--texto);
+    }
+
+    .text-outline {
+        color: transparent;
+        -webkit-text-stroke: 1.5px var(--texto);
+        opacity: 0.15;
+        margin-top: -0.1em;
+    }
+
+    /* Content Block */
+    .hero-description {
+        font-family: var(--font-main);
+        font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+        font-weight: 400;
+        line-height: 1.6;
+        color: var(--texto-muted);
+        max-width: 700px;
+        margin: 0 auto 3.5rem;
+        text-wrap: balance;
+    }
+
+    .highlight {
+        color: var(--texto);
+        font-weight: 600;
+        position: relative;
+    }
+
+    /* Actions */
+    .btn-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2.5rem;
+    }
+
+    .btn-primary {
+        background: var(--texto);
+        color: var(--bg-main);
+        padding: 1.2rem 3rem;
+        border-radius: 100px;
+        font-weight: 800;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+        border: 1px solid var(--texto);
+    }
+
+    .btn-primary:hover {
+        background: transparent;
+        color: var(--texto);
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary svg {
+        transition: transform 0.5s ease;
+    }
+
+    .btn-primary:hover svg {
+        transform: translateX(5px);
+    }
+
+    .btn-secondary {
+        font-weight: 800;
+        color: var(--texto);
+        text-decoration: none;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        position: relative;
+        padding-bottom: 6px;
+    }
+
+    .btn-secondary::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--accent);
+        transition: width 0.4s ease;
+    }
+
+    .btn-secondary:hover::after {
+        width: 100%;
+    }
+
+    /* Scroll Element */
+    .scroll-element {
+        position: absolute;
+        bottom: 3rem;
+        right: 5%;
+        z-index: 10;
+    }
+
+    .rotating-unit {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .rotating-unit svg {
+        animation: spin 20s linear infinite;
+        width: 100%;
+        height: 100%;
+    }
+
+    .unit-icon {
+        position: absolute;
+        color: var(--accent-dark);
+        animation: float 2s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes float {
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(10px);
+        }
+    }
+
+    /* Reveal System Fix (ensure they show) */
+    .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+        .availability-strip {
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+        .divider {
+            display: none;
+        }
+        .name-main {
+            font-size: 20vw;
+        }
+        .btn-container {
+            flex-direction: column;
+            width: 100%;
+            gap: 1.5rem;
+        }
+        .btn-primary {
+            width: 100%;
+            justify-content: center;
+        }
+        .scroll-element {
+            display: none;
+        }
+    }
+</style>

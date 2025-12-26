@@ -1,0 +1,151 @@
+<div id="cursor" class="hidden">
+    <div class="cursor-dot"></div>
+    <div class="cursor-label"></div>
+</div>
+
+<style>
+    #cursor {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+        pointer-events: none;
+        mix-blend-mode: exclusion;
+        transition: opacity 0.3s ease;
+    }
+
+    .hidden {
+        opacity: 0;
+    }
+
+    .cursor-dot {
+        width: 15px;
+        height: 15px;
+        background-color: white;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .cursor-label {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: var(--font-main);
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: black;
+        opacity: 0;
+        white-space: nowrap;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* States */
+    :global(.cursor-hover) .cursor-dot {
+        transform: translate(-50%, -50%) scale(3.5);
+        background-color: white;
+    }
+
+    :global(.cursor-text-active) .cursor-dot {
+        transform: translate(-50%, -50%) scale(6);
+        background-color: white;
+    }
+
+    :global(.cursor-text-active) .cursor-label {
+        opacity: 1;
+        transition: opacity 0.2s 0.1s;
+    }
+</style>
+
+<script>
+    const cursor = document.getElementById("cursor");
+    const cursorLabel = cursor?.querySelector(".cursor-label");
+
+    // State
+    let mouseX = 0;
+    let mouseY = 0;
+    let cursorX = 0;
+    let cursorY = 0;
+    let isMoving = false;
+
+    // Configuration
+    const LERP_FACTOR = 0.15; // Smoothness (0-1)
+
+    if (window.matchMedia("(pointer: fine)").matches && cursor) {
+        cursor.classList.remove("hidden");
+        document.body.style.cursor = "none"; // Hide default cursor globally
+
+        // Track Mouse
+        document.addEventListener("mousemove", (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            if (!isMoving) {
+                // Initial position fix
+                cursorX = mouseX;
+                cursorY = mouseY;
+                isMoving = true;
+            }
+        });
+
+        // Loop for Smooth Animation
+        const animate = () => {
+            // Linear Interpolation (Lerp)
+            cursorX += (mouseX - cursorX) * LERP_FACTOR;
+            cursorY += (mouseY - cursorY) * LERP_FACTOR;
+
+            cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0)`;
+
+            requestAnimationFrame(animate);
+        };
+        requestAnimationFrame(animate);
+
+        // Hover Interactions using Delegation (Better Performance)
+        const handleMouseEnter = (target: Element) => {
+            // Check for specific data attributes
+            const label = target.getAttribute("data-cursor-text");
+            const isHoverTarget =
+                target.classList.contains("hover-target") ||
+                target.closest(".hover-target") ||
+                target.tagName === "A" ||
+                target.tagName === "BUTTON";
+
+            if (label && cursorLabel) {
+                cursor.classList.add("cursor-text-active");
+                cursorLabel.textContent = label;
+            } else if (isHoverTarget) {
+                cursor.classList.add("cursor-hover");
+            }
+        };
+
+        const handleMouseLeave = () => {
+            cursor.classList.remove("cursor-hover", "cursor-text-active");
+            if (cursorLabel) cursorLabel.textContent = "";
+        };
+
+        // Attach listeners to interactive elements
+        const attachListeners = () => {
+            document
+                .querySelectorAll(
+                    "a, button, .hover-target, [data-cursor-text]",
+                )
+                .forEach((el) => {
+                    el.addEventListener("mouseenter", () =>
+                        handleMouseEnter(el),
+                    );
+                    el.addEventListener("mouseleave", handleMouseLeave);
+                });
+        };
+
+        // Run initially and observe for new elements (e.g. client side routing)
+        attachListeners();
+
+        // Optional: Re-attach on dynamic updates if needed
+        // const observer = new MutationObserver(attachListeners);
+        // observer.observe(document.body, { childList: true, subtree: true });
+    }
+</script>

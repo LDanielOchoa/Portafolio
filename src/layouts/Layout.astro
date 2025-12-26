@@ -1,0 +1,157 @@
+---
+interface Props {
+    title: string;
+    description: string;
+    image?: string;
+}
+
+const { title, description, image = "/img/og-image.png" } = Astro.props;
+const siteUrl = "https://daniel-ochoa.com";
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl);
+---
+
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta name="theme-color" content="#fafafa" />
+
+        <!-- Open Graph -->
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={image} />
+
+        <!-- Fonts (Plus Jakarta & Playfair) -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+
+        <script is:inline>
+            (function () {
+                const theme =
+                    localStorage.getItem("theme") ||
+                    (window.matchMedia("(prefers-color-scheme: dark)").matches
+                        ? "dark"
+                        : "light");
+                if (theme === "dark")
+                    document.documentElement.classList.add("dark");
+            })();
+        </script>
+    </head>
+    <body>
+        <div id="scroll-progress"></div>
+
+        <div class="main-wrapper">
+            <slot />
+        </div>
+
+        <style is:global>
+            :root {
+                --bg-main: #ffffff;
+                --bg-main-rgb: 255, 255, 255;
+                --accent: #b0a6de;
+                --accent-rgb: 176, 166, 222;
+                --accent-dark: #6b5b95;
+                --accent-dark-rgb: 107, 91, 149;
+                --texto: #111111;
+                --texto-muted: #666666;
+                --glass-border: rgba(0, 0, 0, 0.05);
+                --card-bg: #ffffff;
+                --font-main: "Plus Jakarta Sans", sans-serif;
+                --font-heading: "Playfair Display", serif;
+            }
+
+            .dark {
+                --bg-main: #0a0a0a;
+                --bg-main-rgb: 10, 10, 10;
+                --accent: #9f90d0;
+                --accent-rgb: 159, 144, 208;
+                --accent-dark: #b0a6de;
+                --accent-dark-rgb: 176, 166, 222;
+                --texto: #f5f5f5;
+                --texto-muted: #999999;
+                --glass-border: rgba(255, 255, 255, 0.05);
+                --card-bg: #111111;
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            html {
+                scroll-behavior: smooth;
+                background-color: var(--bg-main);
+                scrollbar-gutter: stable;
+            }
+
+            body {
+                font-family: var(--font-main);
+                color: var(--texto);
+                background-color: var(--bg-main);
+                transition:
+                    background-color 0.6s ease,
+                    color 0.6s ease;
+                -webkit-font-smoothing: antialiased;
+                overflow-x: hidden;
+            }
+
+            #scroll-progress {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 0%;
+                height: 2px;
+                background: var(--accent-dark);
+                z-index: 10000;
+                transition: width 0.1s ease;
+            }
+
+            /* Premium Selection */
+            ::-webkit-scrollbar {
+                width: 6px;
+            }
+            ::-webkit-scrollbar-track {
+                background: var(--bg-main);
+            }
+            ::-webkit-scrollbar-thumb {
+                background: var(--glass-border);
+                border-radius: 10px;
+            }
+            ::-webkit-scrollbar-thumb:hover {
+                background: var(--accent);
+            }
+
+            ::selection {
+                background: var(--accent-dark);
+                color: white;
+            }
+
+            /* Shared Title Styles */
+            .main-title {
+                letter-spacing: -0.03em;
+            }
+        </style>
+
+        <script>
+            const progress = document.getElementById("scroll-progress");
+            window.addEventListener("scroll", () => {
+                const winScroll = document.documentElement.scrollTop;
+                const height =
+                    document.documentElement.scrollHeight -
+                    document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                if (progress) progress.style.width = scrolled + "%";
+            });
+        </script>
+    </body>
+</html>

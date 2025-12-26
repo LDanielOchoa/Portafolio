@@ -1,0 +1,42 @@
+<div class="noise-overlay"></div>
+<div class="bg-glow" id="glow"></div>
+
+<style>
+    .noise-overlay {
+        position: fixed;
+        inset: 0;
+        background: url("https://grainy-gradients.vercel.app/noise.svg");
+        opacity: 0.4;
+        z-index: 10;
+        pointer-events: none;
+        mix-blend-mode: overlay;
+    }
+
+    .bg-glow {
+        position: fixed;
+        width: 60vmax;
+        height: 60vmax;
+        background: radial-gradient(
+            circle,
+            rgb(198, 183, 226, 0.4) 0%,
+            transparent 60%
+        );
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 1;
+        filter: blur(80px);
+        transition: transform 0.1s linear;
+    }
+</style>
+
+<script>
+    const glow = document.getElementById("glow");
+    if (glow && window.matchMedia("(pointer: fine)").matches) {
+        document.addEventListener("mousemove", (e) => {
+            const { clientX: x, clientY: y } = e;
+            requestAnimationFrame(() => {
+                glow.style.transform = `translate(${x - window.innerWidth / 4}px, ${y - window.innerHeight / 4}px)`;
+            });
+        });
+    }
+</script>
