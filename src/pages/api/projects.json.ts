@@ -2,30 +2,12 @@ export const GET = async () => {
     const proyectos = [
         {
             id: "01",
-            nombre: "Aura Meditation",
-            descripcion: "Plataforma de bienestar y mindfulness con audio espacial.",
-            imagen: "/img/project_mobile.png",
-            etiquetas: ["React Native", "Node.js"],
-            year: "2024",
-            link: "#",
-        },
-        {
-            id: "02",
-            nombre: "Nexus Analytics",
-            descripcion: "Sistema de dashboard en tiempo real para big data financiero.",
-            imagen: "/img/portfolio_hero.png",
-            etiquetas: ["Next.js", "D3.js"],
-            year: "2023",
-            link: "#",
-        },
-        {
-            id: "03",
-            nombre: "Cipher Explorer",
-            descripcion: "Interfaz experimental para navegación de modelos LLM.",
-            imagen: "/img/project_mobile.png",
-            etiquetas: ["Python", "WebGL"],
-            year: "2023",
-            link: "#",
+            nombre: "Sitio Web SAO6",
+            descripcion: "Diseño y desarrollo integral del portal institucional para Sistema Alimentador Oriental S.A.S. Optimización de rendimiento, arquitectura escalable y gestión de formularios estratégicos.",
+            imagen: "/img/sao6_web.png",
+            etiquetas: ["Arquitectura Web", "Rendimiento", "UI/UX"],
+            year: "2025",
+            link: "https://sao6.com.co/",
         },
     ];
 

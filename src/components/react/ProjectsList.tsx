@@ -78,19 +78,16 @@ export default function ProjectsList() {
             <ul className="projects-stack">
                 {filteredProjects.map((p) => (
                     <li key={p.id} className="project-item reveal active">
-                        <div className="project-meta">
-                            <span className="project-id" aria-hidden="true">{p.id}</span>
-                            <div className="meta-tags">{p.etiquetas.join(" / ")}</div>
-                            <time className="project-year" dateTime={p.year}>{p.year}</time>
-                        </div>
-
+                        {/* 1. Imagen Grande */}
                         <a
                             href={p.link}
-                            className="project-link hover-target"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="project-link"
                             aria-label={`Ver caso de estudio: ${p.nombre}`}
                         >
                             <div className="image-container">
-                                <div className="overlay-read" aria-hidden="true">LEER CASO</div>
+                                <div className="overlay-read" aria-hidden="true"></div>
                                 <img
                                     src={p.imagen}
                                     alt={`Vista previa de la interfaz de ${p.nombre}`}
@@ -103,24 +100,35 @@ export default function ProjectsList() {
                             </div>
                         </a>
 
+                        {/* 2. Información Clara */}
                         <div className="project-info">
+                            <div className="project-inner-meta">
+                                <span className="project-id-text">{p.id}</span>
+                                <time className="project-year-badge" dateTime={p.year}>{p.year}</time>
+                            </div>
+
+                            <div className="meta-tags-inline">{p.etiquetas.join(" — ")}</div>
+
                             <h3 className="project-title">{p.nombre}</h3>
                             <p className="project-desc">{p.descripcion}</p>
+
                             <a
                                 href={p.link}
-                                className="btn-arrow hover-target"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="btn-arrow"
                                 aria-label={`Ir al proyecto ${p.nombre}`}
                             >
                                 <svg
-                                    width="32"
-                                    height="32"
-                                    viewBox="0 0 32 32"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
                                     fill="none"
                                     stroke="currentColor"
-                                    strokeWidth="1.5"
+                                    strokeWidth="2"
                                     aria-hidden="true"
                                 >
-                                    <path d="M6 26L26 6M26 6H10M26 6V22" />
+                                    <path d="M7 17L17 7M17 7H7M17 7V17" />
                                 </svg>
                             </a>
                         </div>

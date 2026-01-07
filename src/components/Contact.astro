@@ -23,17 +23,20 @@
                 <div class="info-blocks">
                     <div class="info-item">
                         <span class="info-tag">Email</span>
-                        <a href="mailto:hola@daniel.dev" class="info-value"
-                            >hola@daniel.dev</a
+                        <a
+                            href="mailto:daniel.ochoaa.cass@gmail.com"
+                            class="info-value">daniel.ochoaa.cass@gmail.com</a
                         >
                     </div>
 
                     <div class="info-item">
                         <span class="info-tag">Social</span>
                         <div class="social-grid">
-                            <a href="#" class="social-pill">LinkedIn</a>
-                            <a href="#" class="social-pill">GitHub</a>
-                            <a href="#" class="social-pill">Twitter</a>
+                            <a
+                                href="https://www.linkedin.com/in/danielochoaa/"
+                                target="_blank"
+                                class="social-pill">LinkedIn</a
+                            >
                         </div>
                     </div>
                 </div>
@@ -195,11 +198,12 @@
 
     .info-value {
         font-family: var(--font-heading);
-        font-size: 1.8rem;
+        font-size: clamp(1.2rem, 2.5vw, 1.8rem);
         color: var(--texto);
         text-decoration: none;
         font-weight: 700;
         transition: opacity 0.3s ease;
+        word-break: break-all;
     }
 
     .info-value:hover {

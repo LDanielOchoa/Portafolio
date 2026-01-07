@@ -6,18 +6,9 @@
     <!-- Glows Decorativos (Mesh Gradients) -->
     <div class="glow glow-1" aria-hidden="true"></div>
     <div class="glow glow-2" aria-hidden="true"></div>
+    <div class="glow glow-3" aria-hidden="true"></div>
 
     <div class="hero-inner">
-        <!-- Badge de Disponibilidad (Pill Moderno) -->
-        <div class="reveal availability-strip">
-            <div class="pill-badge">
-                <span class="dot"></span>
-                <span>Disponible para proyectos</span>
-            </div>
-            <span class="divider"></span>
-            <span class="location">Bogotá, Colombia</span>
-        </div>
-
         <!-- Bloque de Nombre (Jerarquía Clara) -->
         <div class="name-block">
             <h1 class="reveal name-main">
@@ -27,16 +18,18 @@
         </div>
 
         <!-- Tagline & Descripción -->
-        <div class="reveal content-block" style="transition-delay: 200ms">
+        <div class="reveal content-block" style="transition-delay: 100ms">
             <p class="hero-description">
-                Arquitecto de software especializado en crear
-                <span class="highlight">soluciones digitales</span> donde la estética
-                y la funcionalidad convergen de forma minimalista.
+                Desarrollador enfocado en <span class="highlight"
+                    >Ingeniería de Software</span
+                >, transformando procesos complejos en soluciones digitales
+                intuitivas a través de desarrollo full-stack y buenas prácticas
+                de arquitectura.
             </p>
         </div>
 
         <!-- Acciones (UX Refinada) -->
-        <div class="reveal actions-block" style="transition-delay: 400ms">
+        <div class="reveal actions-block" style="transition-delay: 200ms">
             <div class="btn-container">
                 <a href="#proyectos" class="btn-primary">
                     Ver Proyectos
@@ -56,38 +49,46 @@
         </div>
     </div>
 
-    <!-- Elemento Rotativo (Sutil y Elegante) -->
-    <div class="scroll-element reveal">
-        <div class="rotating-unit">
+    <!-- Elemento Rotativo (Musica) -->
+    <div class="scroll-element reveal" style="transition-delay: 300ms">
+        <a
+            href="https://open.spotify.com/playlist/2kcN3PCAiRllRApQxcYMIy?si=04a3e04b530e4b48"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rotating-unit"
+            aria-label="Playlist Música que me gusta"
+        >
             <svg viewBox="0 0 100 100">
                 <path
                     id="circlePath"
                     d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
                     fill="none"></path>
                 <text
-                    font-size="7"
+                    font-size="6.5"
                     font-weight="800"
                     fill="var(--texto-muted)"
-                    letter-spacing="4"
+                    letter-spacing="3"
                 >
                     <textPath xlink:href="#circlePath"
-                        >SCROLL DOWN • EXPLORAR • SCROLL DOWN • EXPLORAR •</textPath
+                        >• MUSICA QUE ME GUSTA • MUSICA QUE ME GUSTA</textPath
                     >
                 </text>
             </svg>
             <div class="unit-icon">
                 <svg
-                    width="16"
-                    height="16"
+                    width="20"
+                    height="20"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
                     stroke-width="2"
                 >
-                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"></path>
+                    <path d="M9 18V5l12-2v13"></path>
+                    <circle cx="6" cy="18" r="3"></circle>
+                    <circle cx="18" cy="16" r="3"></circle>
                 </svg>
             </div>
-        </div>
+        </a>
     </div>
 </section>
 
@@ -107,25 +108,54 @@
     /* Glows Effect (Mesh Gradients) */
     .glow {
         position: absolute;
-        width: 40vw;
-        height: 40vw;
+        width: 50vw;
+        height: 50vw;
         border-radius: 50%;
-        filter: blur(100px);
-        opacity: 0.15;
+        filter: blur(120px);
+        opacity: 0.08;
         z-index: 1;
         pointer-events: none;
+        animation: float-glow 20s ease-in-out infinite;
     }
 
     .glow-1 {
-        top: -10%;
-        right: -10%;
+        top: -15%;
+        right: -15%;
         background: var(--accent);
+        animation-delay: 0s;
     }
 
     .glow-2 {
-        bottom: -10%;
-        left: -10%;
+        bottom: -15%;
+        left: -15%;
         background: var(--accent-dark);
+        animation-delay: -10s;
+    }
+
+    .glow-3 {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(
+            135deg,
+            var(--accent) 0%,
+            var(--accent-dark) 100%
+        );
+        opacity: 0.05;
+        animation-delay: -5s;
+    }
+
+    @keyframes float-glow {
+        0%,
+        100% {
+            transform: translate(0, 0) scale(1);
+        }
+        33% {
+            transform: translate(30px, -30px) scale(1.1);
+        }
+        66% {
+            transform: translate(-30px, 30px) scale(0.9);
+        }
     }
 
     .hero-inner {
@@ -135,66 +165,6 @@
         max-width: 1000px;
         width: 100%;
         padding: 0 5%;
-        margin-top: -2rem; /* Visual balance */
-    }
-
-    /* Availability Strip */
-    .availability-strip {
-        display: inline-flex;
-        align-items: center;
-        gap: 1.5rem;
-        margin-bottom: 3.5rem;
-    }
-
-    .pill-badge {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        padding: 8px 16px;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid var(--glass-border);
-        border-radius: 100px;
-        font-size: 0.7rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: var(--texto);
-        backdrop-filter: blur(10px);
-    }
-
-    .dot {
-        width: 6px;
-        height: 6px;
-        background: #22c55e;
-        border-radius: 50%;
-        box-shadow: 0 0 10px #22c55e;
-        animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-        0%,
-        100% {
-            opacity: 1;
-            transform: scale(1);
-        }
-        50% {
-            opacity: 0.5;
-            transform: scale(1.3);
-        }
-    }
-
-    .divider {
-        width: 1px;
-        height: 14px;
-        background: var(--glass-border);
-    }
-
-    .location {
-        font-size: 0.7rem;
-        font-weight: 600;
-        color: var(--texto-muted);
-        text-transform: uppercase;
-        letter-spacing: 2px;
     }
 
     /* Name Block */
@@ -203,7 +173,7 @@
         font-size: clamp(4.5rem, 15vw, 12rem);
         line-height: 0.9;
         font-weight: 900;
-        margin: 0 0 2rem;
+        margin: 0 0 2.5rem;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -211,12 +181,20 @@
 
     .text-fill {
         color: var(--texto);
+        background: linear-gradient(
+            135deg,
+            var(--texto) 0%,
+            var(--texto-muted) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
     }
 
     .text-outline {
         color: transparent;
         -webkit-text-stroke: 1.5px var(--texto);
-        opacity: 0.15;
+        opacity: 0.12;
         margin-top: -0.1em;
     }
 
@@ -225,9 +203,9 @@
         font-family: var(--font-main);
         font-size: clamp(1.1rem, 2.5vw, 1.45rem);
         font-weight: 400;
-        line-height: 1.6;
+        line-height: 1.7;
         color: var(--texto-muted);
-        max-width: 700px;
+        max-width: 650px;
         margin: 0 auto 3.5rem;
         text-wrap: balance;
     }
@@ -236,6 +214,14 @@
         color: var(--texto);
         font-weight: 600;
         position: relative;
+        background: linear-gradient(
+            135deg,
+            var(--accent) 0%,
+            var(--accent-dark) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
     }
 
     /* Actions */
@@ -261,13 +247,36 @@
         letter-spacing: 2px;
         transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
         border: 1px solid var(--texto);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn-primary::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: var(--accent);
+        transform: translate(-50%, -50%);
+        transition:
+            width 0.6s ease,
+            height 0.6s ease;
+        z-index: -1;
+    }
+
+    .btn-primary:hover::before {
+        width: 300px;
+        height: 300px;
     }
 
     .btn-primary:hover {
         background: transparent;
         color: var(--texto);
         transform: translateY(-8px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     }
 
     .btn-primary svg {
@@ -287,6 +296,7 @@
         letter-spacing: 2px;
         position: relative;
         padding-bottom: 6px;
+        transition: color 0.3s ease;
     }
 
     .btn-secondary::after {
@@ -296,12 +306,20 @@
         left: 0;
         width: 0;
         height: 2px;
-        background: var(--accent);
+        background: linear-gradient(
+            90deg,
+            var(--accent) 0%,
+            var(--accent-dark) 100%
+        );
         transition: width 0.4s ease;
     }
 
     .btn-secondary:hover::after {
         width: 100%;
+    }
+
+    .btn-secondary:hover {
+        color: var(--accent);
     }
 
     /* Scroll Element */
@@ -319,6 +337,12 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+
+    .rotating-unit:hover {
+        transform: scale(1.1);
     }
 
     .rotating-unit svg {
@@ -352,7 +376,7 @@
         }
     }
 
-    /* Reveal System Fix (ensure they show) */
+    /* Reveal System */
     .reveal {
         opacity: 0;
         transform: translateY(30px);
@@ -365,29 +389,64 @@
     }
 
     /* Responsive */
-    @media (max-width: 600px) {
-        .availability-strip {
-            flex-direction: column;
-            gap: 1rem;
+    @media (max-width: 768px) {
+        .name-main {
+            margin-bottom: 2rem;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
             margin-bottom: 2.5rem;
         }
-        .divider {
-            display: none;
+
+        .btn-container {
+            flex-direction: column;
+            gap: 1.5rem;
         }
+
+        .scroll-element {
+            bottom: 2rem;
+            right: 50%;
+            transform: translateX(50%);
+        }
+
+        .rotating-unit {
+            width: 100px;
+            height: 100px;
+        }
+    }
+
+    @media (max-width: 600px) {
         .name-main {
             font-size: 20vw;
         }
-        .btn-container {
-            flex-direction: column;
-            width: 100%;
-            gap: 1.5rem;
+
+        .hero-description {
+            font-size: 1rem;
         }
+
+        .btn-container {
+            width: 100%;
+        }
+
         .btn-primary {
             width: 100%;
             justify-content: center;
+            padding: 1.1rem 2rem;
+            font-size: 0.85rem;
         }
+
+        .btn-secondary {
+            font-size: 0.85rem;
+        }
+
         .scroll-element {
             display: none;
+        }
+
+        .glow {
+            width: 80vw;
+            height: 80vw;
         }
     }
 </style>
